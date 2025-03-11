@@ -1,6 +1,6 @@
 "use client";
 import '../styles/globals.css';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function Home() {
   const lightRef = useRef(null);
@@ -8,6 +8,7 @@ export default function Home() {
   const mouseY = useRef(0);
   const lightX = useRef(0);
   const lightY = useRef(0);
+  const [activeNav, setActiveNav] = useState('');
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -33,6 +34,10 @@ export default function Home() {
     };
   }, []);
 
+  const handleNavClick = (id) => {
+    setActiveNav(id);
+  };
+
   return (
     <div className="relative min-h-screen bg-[#020b05] text-white flex"> {/* Couleur de fond beaucoup plus sombre et utilisation de Flexbox */}
       <div
@@ -42,11 +47,51 @@ export default function Home() {
       ></div>
       <nav className="fixed top-0 left-0 h-full w-64 p-4 flex flex-col justify-center"> {/* Centrer les éléments verticalement et déplacer plus à droite */}
         <ul className="space-y-8"> {/* Espacement plus grand entre les éléments */}
-          <li><a href="#home" className="block p-4 text-xl rounded hover-bg-blur">Présentation</a></li> {/* Éléments plus gros */}
-          <li><a href="#about" className="block p-4 text-xl rounded hover-bg-blur">Projets</a></li> {/* Éléments plus gros */}
-          <li><a href="#services" className="block p-4 text-xl rounded hover-bg-blur">Stages</a></li> {/* Éléments plus gros */}
-          <li><a href="#veille" className="block p-4 text-xl rounded hover-bg-blur">Veilles</a></li> {/* Éléments plus gros */}
-          <li><a href="#contacts" className="block p-4 text-xl rounded hover-bg-blur">Contacts</a></li> {/* Éléments plus gros */}
+          <li>
+            <a
+              href="#home"
+              className={`block p-4 text-xl rounded hover-bg-blur nav-item ${activeNav === 'home' ? 'active' : ''}`}
+              onClick={() => handleNavClick('home')}
+            >
+              - Présentation
+            </a>
+          </li>
+          <li>
+            <a
+              href="#about"
+              className={`block p-4 text-xl rounded hover-bg-blur nav-item ${activeNav === 'about' ? 'active' : ''}`}
+              onClick={() => handleNavClick('about')}
+            >
+              - Projets
+            </a>
+          </li>
+          <li>
+            <a
+              href="#services"
+              className={`block p-4 text-xl rounded hover-bg-blur nav-item ${activeNav === 'services' ? 'active' : ''}`}
+              onClick={() => handleNavClick('services')}
+            >
+              - Stages
+            </a>
+          </li>
+          <li>
+            <a
+              href="#veille"
+              className={`block p-4 text-xl rounded hover-bg-blur nav-item ${activeNav === 'veille' ? 'active' : ''}`}
+              onClick={() => handleNavClick('veille')}
+            >
+              - Veilles
+            </a>
+          </li>
+          <li>
+            <a
+              href="#contacts"
+              className={`block p-4 text-xl rounded hover-bg-blur nav-item ${activeNav === 'contacts' ? 'active' : ''}`}
+              onClick={() => handleNavClick('contacts')}
+            >
+              - Contacts
+            </a>
+          </li>
         </ul>
       </nav>
       <div className="flex flex-1 ml-64"> {/* Conteneur principal avec flex pour les trois colonnes */}
@@ -58,31 +103,34 @@ export default function Home() {
           </div>
         </div>
         <main className="flex-1 flex flex-col items-center justify-center p-4 space-y-16"> {/* Colonne des textes */}
-          <section id="home" className="mb-16 text-left fade-in"> {/* Section Présentation */}
+          <section id="home" className="mb-16 text-left fade-in-left bubble-rectangle"> {/* Section Présentation */}
             <h2 className="text-2xl mb-4">Présentation</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum.</p>
+            <p>Je suis un jeune développeur, étudiant en BTS sio à dominique villars</p>
+            <div className="mt-8"> {/* Conteneur des deux éléments en dessous */}
+
+            </div>
           </section>
-          <section id="about" className="mb-16 text-left fade-in"> {/* Section Projets */}
+          <section id="about" className="mb-16 text-left fade-in-left bubble-rectangle"> {/* Section Projets */}
             <h2 className="text-2xl mb-4">Projets</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum.</p>
           </section>
-          <section id="services" className="mb-16 text-left fade-in"> {/* Section Stages */}
+          <section id="services" className="mb-16 text-left fade-in-left bubble-rectangle"> {/* Section Stages */}
             <h2 className="text-2xl mb-4">Stages</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum.</p>
           </section>
-          <section id="veille" className="mb-16 text-left fade-in"> {/* Section Veilles */}
+          <section id="veille" className="mb-16 text-left fade-in-left bubble-rectangle"> {/* Section Veilles */}
             <h2 className="text-2xl mb-4">Veilles</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum.</p>
           </section>
-          <section id="contacts" className="mb-16 text-left fade-in"> {/* Section Contacts */}
+          <section id="contacts" className="mb-16 text-left fade-in-left bubble-rectangle"> {/* Section Contacts */}
             <h2 className="text-2xl mb-4">Contacts</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum.</p>
           </section>
-          <div className="text-center mt-16 fade-in">
+          <div className="text-center mt-16 fade-in-left bubble-rectangle">
             <h1 className="text-4xl font-bold">Benny vanhoe</h1>
             <p className="mt-4">Portfolio</p>
           </div>
-          <div className="text-center p-4 fade-in"> {/* Centrer le texte */}
+          <div className="text-center p-4 fade-in-left bubble-rectangle"> {/* Centrer le texte */}
             <p>© 2025 Benny vanhoe</p>
           </div>
         </main>
