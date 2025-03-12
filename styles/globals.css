@@ -100,3 +100,184 @@ html {
   opacity: 1; /* Opacité pleine lorsqu'actif */
   transform: translateX(10px); /* Déplacement vers la droite lorsqu'actif */
 }
+.section {
+  padding: 20px;
+  width: 60%;
+  height: 500px;
+  margin-bottom: 16px;
+  border-radius: 20px;
+}
+
+.section-home {
+  background-color: rgba(255, 0, 0, 0.8); /* Rouge avec opacité */
+}
+
+.section-about {
+  background-color: rgba(0, 255, 0, 0.8); /* Vert avec opacité */
+}
+
+.section-services {
+  background-color: rgba(0, 0, 255, 0.8); /* Bleu avec opacité */
+}
+
+.section-veille {
+  background-color: rgba(255, 255, 0, 0.8); /* Jaune avec opacité */
+}
+
+.section-contacts {
+  background-color: rgba(255, 0, 255, 0.8); /* Magenta avec opacité */
+}
+
+@keyframes galaxyColor {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.text-galaxy {
+  background: linear-gradient(270deg, #3d3dc7, #dccaec, #1266e4, #cacad4, #3d3dc7);
+  background-size: 1000% 1000%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: galaxyColor 15s ease infinite;
+}
+
+.nav-item.active,
+.nav-item:hover {
+  transform: translateX(10px); /* Déplacement vers la droite lorsqu'actif ou au survol */
+  color: transparent;
+  background: linear-gradient(270deg, #3d3dc7, #dccaec, #1266e4, #cacad4, #3d3dc7);
+  background-size: 1000% 1000%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: galaxyColor 15s ease infinite;
+}
+
+.pulse-logo {
+  position: relative;
+  width: 100px; /* Ajustez la taille selon vos besoins */
+  height: 100px; /* Ajustez la taille selon vos besoins */
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 10px #ff1493; /* Rose lumineux */
+  animation: pulse 1.5s infinite alternate ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 5px #ff1493;
+  }
+  100% {
+    box-shadow: 0 0 20px #ff69b4;
+  }
+}
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.section {
+  padding: 20px;
+  width: 60%;
+  height: 500px;
+  margin-bottom: 16px;
+  border-radius: 20px;
+  transition: transform 0.5s ease-in-out;
+}
+
+.section.active {
+  animation: slideIn 0.5s forwards;
+}
+
+.section.inactive {
+  animation: slideOut 0.5s forwards;
+}
+
+.section-home {
+  background-color: rgba(255, 0, 0, 0.8); /* Rouge avec opacité */
+}
+
+.section-about {
+  background-color: rgba(0, 255, 0, 0.8); /* Vert avec opacité */
+}
+
+.section-services {
+  background-color: rgba(0, 0, 255, 0.8); /* Bleu avec opacité */
+}
+
+.section-veille {
+  background-color: rgba(255, 255, 0, 0.8); /* Jaune avec opacité */
+}
+
+.section-contacts {
+  background-color: rgba(255, 0, 255, 0.8); /* Magenta avec opacité */
+}
+
+@keyframes galaxyColor {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.text-galaxy {
+  background: linear-gradient(270deg, #3d3dc7, #dccaec, #1266e4, #cacad4, #3d3dc7);
+  background-size: 1000% 1000%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: galaxyColor 15s ease infinite;
+}
+
+.nav-item.active,
+.nav-item:hover {
+  transform: translateX(10px); /* Déplacement vers la droite lorsqu'actif ou au survol */
+  color: transparent;
+  background: linear-gradient(270deg, #3d3dc7, #dccaec, #1266e4, #cacad4, #3d3dc7);
+  background-size: 1000% 1000%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: galaxyColor 15s ease infinite;
+}
+
+.pulse-logo {
+  position: relative;
+  width: 100px; /* Ajustez la taille selon vos besoins */
+  height: 100px; /* Ajustez la taille selon vos besoins */
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 10px #ff1493; /* Rose lumineux */
+  animation: pulse 1.5s infinite alternate ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 5px #ff1493;
+  }
+  100% {
+    box-shadow: 0 0 20px #ff69b4;
+  }
+}
