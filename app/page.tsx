@@ -58,14 +58,12 @@ export default function Home() {
       <div className="w-full h-[300px] flex items-center justify-center bg-[#]"> {/* Section pour le titre */}
         <h1 className="text-4xl font-sans">Bienvenue sur mon <span className="text-galaxy">Portfolio</span>.<br />
         <p>test</p>    </h1>
-           
-        
       </div>
       <div className="relative flex-1 flex"> {/* Conteneur principal avec flex pour les trois colonnes */}
         <div
           ref={lightRef}
-          className="absolute w-[400px] h-[400px] bg-[#315fe7] rounded-full pointer-events-none" // Taille de la boule
-          style={{ mixBlendMode: 'screen', transform: 'translate(-50%, -50%)', filter: 'blur(250px)' }} // Effet de flou
+          className="fixed inset-0 w-[700px] h-[700px] bg-[#000fef] rounded-full pointer-events-none" // Taille de la boule
+          style={{ mixBlendMode: 'screen', transform: 'translate(-50%, -50%)', filter: 'blur(400px)' }} // Effet de flou
         ></div>
         <nav className="fixed top-0 left-0 h-full w-64 p-4 flex flex-col justify-center"> {/* Centrer les éléments verticalement et déplacer plus à droite */}
           <ul className="space-y-8"> {/* Espacement plus grand entre les éléments */}

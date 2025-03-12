@@ -88,7 +88,7 @@ html {
 }
 
 .nav-item {
-  opacity: 0.5; /* Opacité sombre par défaut */
+  opacity: 0.3; /* Opacité sombre par défaut */
   transition: opacity 0.3s ease, transform 0.3s ease; /* Transition pour l'opacité et le déplacement */
 }
 
@@ -157,6 +157,7 @@ html {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: galaxyColor 15s ease infinite;
+  
 }
 
 .pulse-logo {
@@ -206,10 +207,12 @@ html {
 
 .section.active {
   animation: slideIn 0.5s forwards;
+  
 }
 
 .section.inactive {
   animation: slideOut 0.5s forwards;
+  display: none;
 }
 
 .section-home {
@@ -281,3 +284,4 @@ html {
     box-shadow: 0 0 20px #ff69b4;
   }
 }
+
