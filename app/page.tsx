@@ -43,6 +43,29 @@ export default function Home() {
 
     window.addEventListener('scroll', handleScroll);
 
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.5 // Ajustez selon les besoins
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          entry.target.classList.remove('inactive');
+        } else {
+          entry.target.classList.remove('active');
+          entry.target.classList.add('inactive');
+        }
+      });
+    }, observerOptions);
+
+    const sections = document.querySelectorAll('.section');
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('scroll', handleScroll);
@@ -51,12 +74,16 @@ export default function Home() {
 
   const handleNavClick = (id) => {
     setActiveNav(id);
+    document.getElementById(id).scrollIntoView({
+      behavior: 'smooth',
+      block: 'center' // Défilement au centre de l'écran
+    });
   };
 
   return (
     <div className="relative min-h-screen bg-[#020b05] text-white flex flex-col"> {/* Couleur de fond beaucoup plus sombre et utilisation de Flexbox */}
       <div className="w-full h-[300px] flex items-center justify-center bg-[#]"> {/* Section pour le titre */}
-        <h1 className="text-4xl font-sans">Bienvenue sur mon <span className="text-galaxy">Portfolio</span>.<br />
+        <h1 className="text-4xl">Bienvenue sur mon <span className="text-galaxy">Portfolio</span>.<br />
         <p>test</p>    </h1>
       </div>
       <div className="relative flex-1 flex"> {/* Conteneur principal avec flex pour les trois colonnes */}
@@ -117,58 +144,57 @@ export default function Home() {
         <div className="flex flex-1 ml-64"> {/* Conteneur principal avec flex pour les trois colonnes */}
           <div className="flex flex-col items-center justify-start w-1/3 p-4 fixed top-0 mt-[300px]"> {/* Colonne du logo et des éléments en dessous */}
             <div className="w-40 h-40 bg-white rounded-full flex items-center justify-center mb-8"> {/* Conteneur de la bulle */}
-              <img src="/images/logo.jpg" alt="Logo" className="w-32 h-32 rounded-full" /> {/* Image dans une bulle */}
+              <img src="/images/logo.jpg" alt="Logo" className="w-38 h-38 rounded-full" /> {/* Image dans une bulle */}
             </div>
             <div className="flex space-x-4"> 
+              <div className="w-40 h-10 text-black rounded-full flex items-center justify-center">
+                <span className="text-galaxy">Benoit VANHOENACKER</span>
+              </div>
               <div className="w-20 h-10 text-black rounded-full flex items-center justify-center">
                 <img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/30px-Flag_of_France.svg.png" 
                     alt="FR" width="50" />
               </div>
-              <div className="w-20 h-10 bg-white text-black rounded-full flex items-center justify-center">
-                <p>Texte 2</p>
-              </div>
             </div>
             <div className="flex flex-wrap justify-center space-x-4 mt-8"> {/* Conteneur des 5 autres bulles pour des logos */}
               <div className="w-15 h-15 bg-white text-black rounded-full flex items-center justify-center">
-                <img src="/images/logoPhp.png" alt="Logo" className="w-14.5 h-14.5 rounded-full" /> {/* Image dans une bulle */}
+                <a href="https://www.instagram.com/benny_vanho/"><img src="/images/logoInsta.png" alt="Logo" className="w-14.5 h-14.5 rounded-full" /> {/* Image dans une bulle */}</a>
               </div>
               <div className="w-15 h-15 bg-white text-black rounded-full flex items-center justify-center">
-                <img src="/images/logoJava.png" alt="Logo" className="w-14.5 h-14.5 rounded-full" /> {/* Image dans une bulle */}
-              </div>
-              <div className="w-15 h-15 bg-white text-black rounded-full flex items-center justify-center">
-                <img src="/images/logoFlutter.png" alt="Logo" className="w-14.5 h-14.5 rounded-full" /> {/* Image dans une bulle */}
-              </div>
-              <div className="w-15 h-15 bg-white text-black rounded-full flex items-center justify-center">
-                <img src="/images/logoReact.png" alt="Logo" className="w-14.5 h-14.5 rounded-full" /> {/* Image dans une bulle */}
-              </div>
-              <div className="w-15 h-15 bg-white text-black rounded-full flex items-center justify-center">
-                <img src="/images/logoNext.png" alt="Logo" className="w-14.5 h-14.5 rounded-full" /> {/* Image dans une bulle */}
+                <a href="https://github.com/ElBewbew"><img src="/images/logoGit.png" alt="Logo" className="w-14.5 h-14.5 rounded-full" /> {/* Image dans une bulle */}</a>
+                
               </div>
             </div>
           </div>
-          <main className="flex-1 flex flex-col items-center justify-center p-4 space-y-16 ml-64 mt-[300px]"> {/* Colonne des textes */}
+          <main className="flex-1 flex flex-col items-center justify-center p-4 space-y-16 ml-64 "> {/* Colonne des textes */}
             <section id="home" className="section section-home fade-in-left"> {/* Section Présentation */}
-              <h2 className="text-2xl mb-4">Présentation</h2>
-              <p>Je suis un jeune développeur, étudiant en BTS sio à dominique villars</p>
+              <h2 className="text-2xl mb-4 pulse-bar">Présentation</h2>
+              <div className="fade-in-left">
+              <p>Je suis un jeune développeur, étudiant en <span className="text-galaxy">BTS SIO</span> sio à dominique villars.
+              Dans la vie de tous les jours, je suis un grand joueur de jeux vidéos et un grand fan d'animés ainsi que de motos !<br />
+              J'habite actuellement sur GAP et je souahite plus tard faire ma vie sur AIX. </p>
+              </div>
+              <div>
+                
+              </div>
             </section>
             <section id="about" className="section section-about fade-in-left"> {/* Section Projets */}
-              <h2 className="text-2xl mb-4">Projets</h2>
+              <h2 className="text-2xl mb-4 pulse-bar">Projets</h2>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum.</p>
             </section>
             <section id="services" className="section section-services fade-in-left"> {/* Section Stages */}
-              <h2 className="text-2xl mb-4">Stages</h2>
+              <h2 className="text-2xl mb-4 pulse-bar">Stages</h2>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum.</p>
             </section>
             <section id="veille" className="section section-veille fade-in-left"> {/* Section Veilles */}
-              <h2 className="text-2xl mb-4">Veilles</h2>
+              <h2 className="text-2xl mb-4 pulse-bar">Veilles</h2>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum.</p>
             </section>
             <section id="contacts" className="section section-contacts fade-in-left"> {/* Section Contacts */}
-              <h2 className="text-2xl mb-4">Contacts</h2>
+              <h2 className="text-2xl mb-4 pulse-bar">Contacts</h2>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum.</p>
             </section>
             <div className="section section-contacts text-center mt-16 fade-in-left">
-              <h1 className="text-4xl font-bold">Benny vanhoe</h1>
+              <h1 className="text-4xl pulse-bar">Benny vanhoe</h1>
               <p className="mt-4">Portfolio</p>
             </div>
             <div className="section section-contacts text-center p-4 fade-in-left"> {/* Centrer le texte */}
