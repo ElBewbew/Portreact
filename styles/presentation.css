@@ -1,0 +1,18 @@
+body {
+  background-color: #020b05;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.light {
+  position: fixed;
+  inset: 0;
+  width: 700px;
+  height: 700px;
+  background-color: #000fef;
+  border-radius: 50%;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  transform: translate(-50%, -50%);
+  filter: blur(400px);
+}

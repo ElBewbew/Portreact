@@ -205,7 +205,7 @@ html {
 
 .section.active {
   opacity: 1;
-  
+  transform: scale(1.1);
 }
 
 .section.inactive {
@@ -289,3 +289,68 @@ html {
     box-shadow: 10 0 30px #ff1493, 0 0 30px #ff69b4;
   }
 }
+
+/* Styles pour l'animation de transition */
+.fixed-top-left {
+  position: fixed;
+  top: -300px;
+  left: 110px;
+  width: 50px;
+  height: 50px;
+  transition: all 1s ease-in-out, opacity 0.5s ease-in-out;
+  opacity: 0.7;
+  transform: scale(0.8);
+  z-index: 1000; /* Assurez-vous que l'élément est au-dessus des autres */
+}
+
+.hidden {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-up {
+  animation: fadeUp 0.5s forwards;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+    
+  }
+}
+
+.section-content {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.section-block {
+  width: 48%; /* Ajustez la largeur des blocs pour qu'ils tiennent côte à côte */
+  height: 200px; /* Ajustez la hauteur selon vos besoins */
+  background-color: #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.2rem;
+}
+
+@keyframes fadeOutLeft {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+}
+
+
+
