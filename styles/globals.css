@@ -309,7 +309,7 @@ html {
 }
 
 .fade-up {
-  animation: fadeUp 0.5s forwards;
+  animation: fadeUp 0.7s forwards;
 }
 
 @keyframes fadeUp {

@@ -15,7 +15,7 @@ export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e: MouseEvent) => {
       mouseX.current = e.clientX;
       mouseY.current = e.clientY;
     };
