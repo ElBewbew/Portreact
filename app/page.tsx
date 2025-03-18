@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 
 export default function Home() {
-  const lightRef = useRef(null);
+  const lightRef = useRef<HTMLDivElement>(null);
   const logoRef = useRef(null);
   const bubblesRef = useRef(null);
   const mouseX = useRef(0);
@@ -39,7 +39,7 @@ export default function Home() {
       sections.forEach((section) => {
         const sectionTop = section.offsetTop;
         if (window.scrollY >= sectionTop - 60) {
-          currentSection = section.getAttribute('id');
+          currentSection = section.getAttribute('id') ?? '';
         }
       });
       setActiveNav(currentSection);
@@ -83,12 +83,19 @@ export default function Home() {
     };
   }, []);
 
-  const handleNavClick = (id) => {
+  interface NavClickHandler {
+    (id: string): void;
+  }
+
+  const handleNavClick: NavClickHandler = (id) => {
     setActiveNav(id);
-    document.getElementById(id).scrollIntoView({
-      behavior: 'smooth',
-      block: 'center' // Défilement au centre de l'écran
-    });
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center' // Défilement au centre de l'écran
+      });
+    }
   };
 
   return (
