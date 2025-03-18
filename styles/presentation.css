@@ -16,3 +16,33 @@ body {
   transform: translate(-50%, -50%);
   filter: blur(400px);
 }
+
+.logo-container {
+  border-radius: 50%; /* Pour une bordure arrondie */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; /* Ajustez la taille selon vos besoins */
+  height: 40px; /* Ajustez la taille selon vos besoins */
+  transition: background-color 0.3s ease; /* Transition pour le changement de fond */
+}
+
+.logo-container.active {
+  background-color: rgba(0, 0, 0, 0.5); /* Couleur de fond noire avec une opacité de 50% */
+}
+
+.content-container {
+  display: flex;
+  gap: 10px; /* Espacement entre les éléments */
+}
+
+.left-column {
+  flex: 1; /* Prend tout l'espace disponible */
+}
+
+.right-column {
+  display: flex;
+  flex-direction: column; /* Empile les éléments verticalement */
+  gap: 30px; /* Espacement entre les éléments */
+  flex: 1; /* Prend tout l'espace disponible */
+}

@@ -191,10 +191,12 @@ export default function Home() {
                 J'habite actuellement sur GAP et je souahite plus tard faire ma vie sur AIX. </p>
               </div>
               <div className="section-content">
-                <div className="section-block">Bloc 1</div>
+                <div className="section-block">
+                  <img src="/images/moi.webp" alt="" />
+                </div>
                 <div className="section-block">
                   <Link href="/presentation">
-                    <button className="btn-show--page">Voir plus</button>
+                    <button className="button">-></button>
                   </Link>
                 </div>
               </div>

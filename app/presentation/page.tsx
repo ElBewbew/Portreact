@@ -1,6 +1,8 @@
 "use client";
 import '../../styles/presentation.css';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHouse, faFile, faSchool, faMarker } from '@fortawesome/free-solid-svg-icons';
 
 const Presentation: React.FC = () => {
   const lightRef = useRef<HTMLDivElement>(null);
@@ -8,6 +10,7 @@ const Presentation: React.FC = () => {
   const mouseY = useRef(0);
   const lightX = useRef(0);
   const lightY = useRef(0);
+  const [activeIcon, setActiveIcon] = useState<string | null>(null);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -33,18 +36,80 @@ const Presentation: React.FC = () => {
     };
   }, []);
 
+  const handleIconClick = (icon: string) => {
+    setActiveIcon(icon);
+  };
+
   return (
-    <div className="relative min-h-screen flex flex-col"> {/* Couleur de fond beaucoup plus sombre et utilisation de Flexbox */}
-      <div
-        ref={lightRef}
-        className="light"
-      ></div>
-      <div className="w-full h-[300px] flex items-center justify-center"> {/* Section pour le titre */}
-        <h1 className="text-4xl">Bienvenue sur mon <span className="text-galaxy">Portfolio</span>.<br />
-        <p></p>    </h1>
-      </div>
-      <div className="relative flex-1 flex flex-col items-center justify-center p-4 space-y-16 ml-64"> {/* Conteneur principal avec flex pour les trois colonnes */}
-      </div>
+    <div>
+      <nav className='fixed top-5 left-1/2 transform -translate-x-1/2 z-10 flex justify-between items-center h-13 w-75 border-1 text-white rounded-full px-3'>
+        <div
+          className={`logo-container ${activeIcon === 'house' ? 'active' : ''}`}
+          onClick={() => handleIconClick('house')}
+        >
+          <FontAwesomeIcon icon={faHouse} />
+        </div>
+        <div
+          className={`logo-container ${activeIcon === 'file' ? 'active' : ''}`}
+          onClick={() => handleIconClick('file')}
+        >
+          <FontAwesomeIcon icon={faFile} />
+        </div>
+        <div
+          className={`logo-container ${activeIcon === 'school' ? 'active' : ''}`}
+          onClick={() => handleIconClick('school')}
+        >
+          <FontAwesomeIcon icon={faSchool} />
+        </div>
+        <div
+          className={`logo-container ${activeIcon === 'marker' ? 'active' : ''}`}
+          onClick={() => handleIconClick('marker')}
+        >
+          <FontAwesomeIcon icon={faMarker} />
+        </div>
+      </nav>
+      <main className="relative min-h-screen bg-gradient-to-t from-black to-purple-800 text-white flex flex-col">
+        <div className='content-container p-40'>
+          {activeIcon === 'house' && (
+            <>
+              <div className='left-column'>
+                <section className='bg-white text-black p-50 rounded-lg'>
+                  <h1>1</h1>
+                  <p>test</p>
+                </section>
+              </div>
+              <div className='right-column'>
+                <section className='bg-white text-black h-55 w-200 rounded-lg'>
+                  <h1>2</h1>
+                  <p>test</p>
+                </section>
+                <section className='bg-white text-black h-54 w-200 rounded-lg'>
+                  <h1>3</h1>
+                  <p>test</p>
+                </section>
+              </div>
+            </>
+          )}
+          {activeIcon === 'file' && (
+            <div>
+              <h1>2</h1>
+              <p>test</p>
+            </div>
+          )}
+          {activeIcon === 'school' && (
+            <div>
+              <h1>3</h1>
+              <p>test</p>
+            </div>
+          )}
+          {activeIcon === 'marker' && (
+            <div>
+              <h1></h1>
+              <p>test</p>
+            </div>
+          )}
+        </div>
+      </main>
     </div>
   );
 };
