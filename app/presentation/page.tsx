@@ -3,14 +3,14 @@ import '../../styles/presentation.css';
 import { useEffect, useRef } from 'react';
 
 const Presentation: React.FC = () => {
-  const lightRef = useRef(null);
+  const lightRef = useRef<HTMLDivElement>(null);
   const mouseX = useRef(0);
   const mouseY = useRef(0);
   const lightX = useRef(0);
   const lightY = useRef(0);
 
   useEffect(() => {
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e: MouseEvent) => {
       mouseX.current = e.clientX;
       mouseY.current = e.clientY;
     };
